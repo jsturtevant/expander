@@ -1,4 +1,3 @@
-'use strict';
 /**
  * Created by jsturtevant on 1/18/14.
  */
