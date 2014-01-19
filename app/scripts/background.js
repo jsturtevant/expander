@@ -5,8 +5,8 @@ chrome.runtime.onInstalled.addListener(function (details) {
 });
 
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
-    if (request.method == "getExpander")
-        sendResponse({key: localStorage['expandKey'], value: localStorage['expandValue']});
+    if (request.method == "getOptions")
+        sendResponse({options: JSON.parse(localStorage['options'])});
     else
-        sendResponse({}); // snub them.
+        sendResponse({});
 });

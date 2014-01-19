@@ -5,9 +5,9 @@
 var key = "";
 var value = "";
 
-chrome.runtime.sendMessage({method: "getExpander"}, function(response) {
-    key = response.key;
-    value = response.value;
+chrome.runtime.sendMessage({method: "getOptions"}, function(response) {
+    key = response.options.shortcuts[0].key;
+    value = response.options.shortcuts[0].value;
 });
 
 Mousetrap.stopCallback =function(e, element, combo) {
