@@ -4,7 +4,7 @@
     "description": "The name of the application"
   },
   "appDescription": {
-    "message": "Expand keys words to full words quickly.",
+    "message": "Expand keywords into full words quickly.",
     "description": "The description of the application"
   }
 }
