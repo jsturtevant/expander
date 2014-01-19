@@ -8,7 +8,7 @@ chrome.runtime.sendMessage({method: "getOptions"}, function(response) {
     options = response.options
 
     Mousetrap.bind(options.shortcutKey, function(e) {
-        var elementList = document.querySelectorAll('input[type=text]');
+        var elementList = document.querySelectorAll('input[type=text], textarea');
         var textboxes = Array.prototype.slice.call(elementList,0);
         textboxes.forEach(function(textbox){
             var string = textbox.value;
@@ -30,6 +30,6 @@ Mousetrap.stopCallback =function(e, element, combo) {
     }
 
     // stop for input, select, and textarea
-    return  element.tagName == 'SELECT' || element.tagName == 'TEXTAREA' || (element.contentEditable && element.contentEditable == 'true');
+    return  element.tagName == 'SELECT' || (element.contentEditable && element.contentEditable == 'true');
 }
 
