@@ -32,7 +32,7 @@
                 "styles/main.css"
             ],
             "js": [
-                "scripts/mousetrap.min.js",
+               "bower_components/mousetrap/mousetrap.min.js" ,
                 "scripts/contentscript.js"
             ],
             "run_at": "document_end",
