@@ -10,9 +10,10 @@ var defaultOptions = {
     shortcutKey: DEFAULT_SHORTCUT_KEY
 };
 
-var myApp = angular.module('myApp', []);
-myApp.factory('Data', function() {
+var optionsApp = angular.module('optionsApp', []);
+optionsApp.factory('OptionsData', function() {
     var optionsJSON = localStorage["optionsstore"];
+
     if (!optionsJSON){
         return defaultOptions;
     }
@@ -21,8 +22,8 @@ myApp.factory('Data', function() {
     }
 })
 
-function OptionsCtrl($scope, Data){
-    $scope.options = Data;
+function OptionsCtrl($scope, OptionsData){
+    $scope.options = OptionsData;
 
     $scope.AddShortcut = function(){
       $scope.options.shortcuts.push({key: "", value:""})
