@@ -3,26 +3,33 @@
     <head>
         <link href="styles/main.css" rel="stylesheet">
 
+
+
     </head>
     <body>
-        <h1>Options</h1>
+        <div ng-app="myApp" ng-csp>
+            <div ng-controller="OptionsCtrl">
+                <h1>Options with angular</h1>
 
-        <label for="shortcut" >Shortcut key</label>
-        <input  id="shortcut" type="text" placeholder="shortcut key" />
-        <br>
-        <h2>Expanders</h2>
-        <p>
-           Expand <input  id="expandKey" type="text" placeholder="your key" /> to
-            <input id="expandValue" type="text" placeholder="your full value">
-        </p>
+                <label>Shortcut key</label>
+                <input  ng-model="options.shortcutKey" type="text" placeholder="shortcut key" />
+                <br>
+                <h2>Expanders</h2>
+                <p ng-repeat="shortcut in options.shortcuts">
+                    Expand <input ng-model="shortcut.key" type="text" placeholder="your key" /> to
+                    <input  ng-model="shortcut.value" type="text" placeholder="your full value">
+                </p>
 
-
-        <div id="status"></div>
-        <button id="save">Save</button>
-        <a href="mailto:jsturtevant@gmail.com" target="_top">Send Feedback</a>
+                <div id="status"></div>
+                <button  ng-click="AddShortcut()">Add Shortcut</button>
+                <button  ng-click="Save()">Save</button>
+                <a href="mailto:jsturtevant@gmail.com" target="_top">Send Feedback</a>
+            </div>
+        </div>
     </body>
 
+    <script src="bower_components/angular/angular.min.js"></script>
     <!-- build:js scripts/options.js -->
-     <script src="scripts/options.js"></script>
+    <script src="scripts/options.js"></script>
     <!-- endbuild -->
 </html>
