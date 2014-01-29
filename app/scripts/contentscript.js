@@ -8,27 +8,30 @@ chrome.runtime.sendMessage({method: "getOptions"}, function(response) {
     options = response.options;
 
     Mousetrap.bind(options.shortcutKey, function(e) {
-        var textboxes = SelectElements();
-        ExpandAllOccurrances(textboxes);
+        var textboxes = selectElements();
+        expandAlShortCutOccurrences(textboxes);
         return false;
     });
 });
 
-function ExpandAllOccurrances(elements) {
-    elements.forEach(function (textbox) {
-        var string = textbox.value;
-
-        if (string.match(options.shortcuts[0].key)) {
-            textbox.value = string.replace(options.shortcuts[0].key, options.shortcuts[0].value);
-        }
+function expandAlShortCutOccurrences(elements) {
+    elements.forEach(function (element) {
+        replaceAllShortcuts(element);
     });
-}
+};
 
-function SelectElements() {
+function replaceAllShortcuts(textbox) {
+    options.shortcuts.forEach(function (shortcut) {
+        var string = textbox.value;
+        textbox.value = string.replace(shortcut.key, shortcut.value);
+    });
+};
+
+function selectElements() {
     var elementList = document.querySelectorAll('input[type=text], textarea');
     var textboxes = Array.prototype.slice.call(elementList, 0);
     return textboxes;
-}
+};
 
 Mousetrap.stopCallback =function(e, element, combo) {
     // if the element has the class "mousetrap" then no need to stop
@@ -38,5 +41,5 @@ Mousetrap.stopCallback =function(e, element, combo) {
 
     // stop for input, select, and textarea
     return  element.tagName == 'SELECT' || (element.contentEditable && element.contentEditable == 'true');
-}
+};
 
