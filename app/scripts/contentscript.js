@@ -5,7 +5,7 @@
 var options = {};
 
 chrome.runtime.sendMessage({method: "getOptions"}, function(response) {
-    options = response.options
+    options = response.options;
 
     Mousetrap.bind(options.shortcutKey, function(e) {
         var elementList = document.querySelectorAll('input[type=text], textarea');
@@ -14,8 +14,7 @@ chrome.runtime.sendMessage({method: "getOptions"}, function(response) {
             var string = textbox.value;
 
             if (string.match(options.shortcuts[0].key)){
-                var newValue = string.replace(options.shortcuts[0].key,options.shortcuts[0].value);
-                textbox.value = newValue;
+                textbox.value = string.replace(options.shortcuts[0].key, options.shortcuts[0].value);
             }
         });
 

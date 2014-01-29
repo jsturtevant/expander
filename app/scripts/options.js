@@ -2,6 +2,7 @@
  * Created by jsturtevant on 1/18/14.
  */
 var DEFAULT_SHORTCUT_KEY = 'ctrl+shift+k';
+var LOCAL_STORAGE_KEY = 'optionsStore'
 
 var defaultOptions = {
     shortcuts: [
@@ -11,8 +12,9 @@ var defaultOptions = {
 };
 
 var optionsApp = angular.module('optionsApp', []);
+
 optionsApp.factory('OptionsData', function() {
-    var optionsJSON = localStorage["optionsstore"];
+    var optionsJSON = localStorage[LOCAL_STORAGE_KEY];
 
     if (!optionsJSON){
         return defaultOptions;
@@ -20,7 +22,7 @@ optionsApp.factory('OptionsData', function() {
     else{
         return JSON.parse(optionsJSON);
     }
-})
+});
 
 function OptionsCtrl($scope, OptionsData){
     $scope.options = OptionsData;
@@ -30,6 +32,6 @@ function OptionsCtrl($scope, OptionsData){
     };
 
     $scope.Save = function(){
-        localStorage["optionsstore"] = JSON.stringify($scope.options);
+        localStorage[LOCAL_STORAGE_KEY] = JSON.stringify($scope.options);
     };
 };
