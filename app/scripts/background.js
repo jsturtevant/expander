@@ -6,7 +6,7 @@ chrome.runtime.onInstalled.addListener(function (details) {
 
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     if (request.method == "getOptions")
-        sendResponse({options: JSON.parse(localStorage[LOCAL_STORAGE_KEY])});
+        sendResponse({options: JSON.parse(localStorage['optionsStore'])});
     else
         sendResponse({});
 });
