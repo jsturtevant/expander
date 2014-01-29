@@ -15,6 +15,7 @@
                 <p ng-repeat="shortcut in options.shortcuts">
                     Expand <input ng-model="shortcut.key" type="text" placeholder="your key" /> to
                     <input  ng-model="shortcut.value" type="text" placeholder="your full value">
+                    <a href="#" ng-click="Delete($index)">Delete</a>
                 </p>
 
                 <div id="status"></div>

@@ -34,4 +34,8 @@ function OptionsCtrl($scope, OptionsData){
     $scope.Save = function(){
         localStorage[LOCAL_STORAGE_KEY] = JSON.stringify($scope.options);
     };
+
+    $scope.Delete = function (index){
+        $scope.options.shortcuts.splice(index,1);
+    };
 };
