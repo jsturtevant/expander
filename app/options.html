@@ -6,7 +6,7 @@
     <body>
         <div ng-app="optionsApp" ng-csp>
             <div ng-controller="OptionsCtrl">
-                <h1>Options with angular</h1>
+                <h1>Options</h1>
 
                 <label>Shortcut key</label>
                 <input  ng-model="options.shortcutKey" type="text" placeholder="shortcut key" />
@@ -26,7 +26,10 @@
         </div>
     </body>
 
+    <!-- build:js scripts/angular.js -->
     <script src="bower_components/angular/angular.min.js"></script>
+    <!-- endbuild -->
+
     <!-- build:js scripts/options.js -->
     <script src="scripts/options.js"></script>
     <!-- endbuild -->

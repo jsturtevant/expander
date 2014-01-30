@@ -263,7 +263,7 @@ module.exports = function (grunt) {
         compress: {
             dist: {
                 options: {
-                    archive: 'package/Exapnder.zip'
+                    archive: 'package/Expander.zip'
                 },
                 files: [{
                     expand: true,
