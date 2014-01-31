@@ -5,6 +5,7 @@ var mountFolder = function (connect, dir) {
     return connect.static(require('path').resolve(dir));
 };
 
+
 // # Globbing
 // for performance reasons we're only matching one level down:
 // 'test/spec/{,*/}*.js'
@@ -22,7 +23,7 @@ module.exports = function (grunt) {
         app: 'app',
         dist: 'dist'
     };
-
+    grunt.loadNpmTasks('grunt-ngmin');
     grunt.initConfig({
         yeoman: yeomanConfig,
         watch: {
@@ -227,6 +228,14 @@ module.exports = function (grunt) {
                     dest: '<%= yeoman.dist %>/images',
                     src: [
                         'generated/*'
+                    ]
+                }, {
+                    expand: true,
+                    cwd: '<%= yeoman.app %>',
+                    dest: '<%= yeoman.dist %>',
+                    src: [
+                        'bower_components/angular/angular.js',
+                        'scripts/options.js'
                     ]
                 }]
             }
