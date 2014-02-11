@@ -23,7 +23,7 @@ function expandAlShortCutOccurrences(elements) {
 
 function replaceAllShortcuts(textbox) {
     options.shortcuts.forEach(function (shortcut) {
-        if (textbox.tagName === "input"){
+        if (textbox.tagName === "INPUT" || textbox.tagName === "TEXTAREA"){
             var string = textbox.value;
             if (string){
                 textbox.value = string.replace(shortcut.key, shortcut.value);
