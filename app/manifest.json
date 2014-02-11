@@ -33,7 +33,6 @@
             ],
             "js": [
                 "bower_components/mousetrap/mousetrap.min.js",
-                "bower_components/jquery/jquery.min.js",
                 "scripts/contentscript.js"
             ],
             "run_at": "document_end",
