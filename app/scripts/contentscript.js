@@ -7,6 +7,7 @@ var options = {};
 chrome.runtime.sendMessage({method: "getOptions"}, function(response) {
     options = response.options;
 
+
     Mousetrap.bind(options.shortcutKey, function(e) {
         var textboxes = selectElements();
         expandAlShortCutOccurrences(textboxes);
@@ -22,14 +23,34 @@ function expandAlShortCutOccurrences(elements) {
 
 function replaceAllShortcuts(textbox) {
     options.shortcuts.forEach(function (shortcut) {
-        var string = textbox.value;
-        textbox.value = string.replace(shortcut.key, shortcut.value);
+        if (textbox.tagName === "input"){
+            var string = textbox.value;
+            if (string){
+                textbox.value = string.replace(shortcut.key, shortcut.value);
+            }
+        }
+        else{
+            var string = textbox.innerHTML;
+            if (string){
+                textbox.innerHTML = string.replace(shortcut.key, shortcut.value);
+            }
+        }
     });
 };
 
 function selectElements() {
     var elementList = document.querySelectorAll('input[type=text], textarea');
     var textboxes = Array.prototype.slice.call(elementList, 0);
+
+    //append custom selectors
+    options.cssSelectors.forEach(function(element){
+        var customElements = document.querySelectorAll(element.value);
+        if (customElements.length >0){
+            var customE = Array.prototype.slice.call(customElements, 0);
+           textboxes = textboxes.concat(customE);
+        }
+    });
+
     return textboxes;
 };
 
