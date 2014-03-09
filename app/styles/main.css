@@ -11,3 +11,16 @@ html {
 .footer{
     margin-top: 15px;
 }
+
+.table-input{
+    width: 170px;
+}
+
+.table-label-medium{
+    width: 80px;
+}
+
+
+.table-label-small{
+    width: 20px;
+}

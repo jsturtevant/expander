@@ -18,7 +18,6 @@
                 <div class="row">
                     <div class="col-md-12">
                         <p ng-show="message" class="label label-success">{{ message }}</p>
-
                     </div>
                 </div>
 
@@ -44,11 +43,11 @@
                     <div class="col-md-12">
                         <table class="table  table-condensed">
                             <tr ng-repeat="shortcut in options.shortcuts">
-                                <td>Expand</td>
-                                <td><input ng-model="shortcut.key" type="text" placeholder="your key" /></td>
-                                <td>to</td>
-                                <td><input  ng-model="shortcut.value" type="text" placeholder="your full value"></td>
-                                <td> <a href="#" ng-click="Delete($index)"><span class="glyphicon glyphicon-remove"></span> Delete</a></td>
+                                <td class="table-label-medium">Expand</td>
+                                <td class="table-input"><input ng-model="shortcut.key" type="text" placeholder="your key" /></td>
+                                <td class="table-label-small">to</td>
+                                <td class="table-input"><input  ng-model="shortcut.value" type="text" placeholder="your full value"></td>
+                                <td > <a href="#" ng-click="Delete($index)"><span class="glyphicon glyphicon-remove"></span> Delete</a></td>
                             </tr>
                         </table>
                     </div>
@@ -76,7 +75,7 @@
                     <div class="col-md-12">
                         <table class="table  table-condensed">
                             <tr ng-repeat="selector in options.cssSelectors track by $index">
-                                <td><input ng-model="selector.value" type="text" placeholder="example: .textbox" /></td>
+                                <td class="table-input"><input ng-model="selector.value" type="text" placeholder="example: .textbox" /></td>
                                 <td>  <a href="#" ng-click="DeleteSelector($index)"><span class="glyphicon glyphicon-remove"></span> Delete</a></td>
                             </tr>
                         </table>
