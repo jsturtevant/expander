@@ -9,7 +9,8 @@ var defaultOptions = {
         {key: "", value:""}
     ],
     cssSelectors: [{value:""}],
-    shortcutKey: DEFAULT_SHORTCUT_KEY
+    shortcutKey: DEFAULT_SHORTCUT_KEY,
+    includeIFrames: true
 };
 
 var optionsApp = angular.module('optionsApp', []);
