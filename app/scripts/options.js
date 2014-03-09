@@ -26,7 +26,7 @@ optionsApp.factory('OptionsData', function() {
     }
 });
 
-function OptionsCtrl($scope, OptionsData){
+function OptionsCtrl($scope, OptionsData, $timeout){
     $scope.options = OptionsData;
 
     $scope.AddShortcut = function(){
@@ -39,6 +39,11 @@ function OptionsCtrl($scope, OptionsData){
 
     $scope.Save = function(){
         localStorage[LOCAL_STORAGE_KEY] = JSON.stringify($scope.options);
+
+        $scope.message = 'Changes saved!';
+        $timeout(function() {
+            $scope.message = null;
+        }, 5 * 1000);
     };
 
     $scope.Delete = function (index){

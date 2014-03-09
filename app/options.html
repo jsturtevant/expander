@@ -8,6 +8,7 @@
             <div ng-controller="OptionsCtrl">
                 <h1>Options</h1>
                 <button  ng-click="Save()">Save</button>
+                <p ng-show="message">{{ message }}</p>
 
                 <h2>Shortcut key</h2>
                 <input  ng-model="options.shortcutKey" type="text" placeholder="shortcut key" />
