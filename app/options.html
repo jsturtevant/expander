@@ -2,38 +2,112 @@
 <html>
     <head>
         <link href="styles/main.css" rel="stylesheet">
+        <!-- Bootstrap -->
+        <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     </head>
     <body>
         <div ng-app="optionsApp">
             <div ng-controller="OptionsCtrl">
-                <h1>Options</h1>
-                <button  ng-click="Save()">Save</button>
-                <p ng-show="message">{{ message }}</p>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1>Options <small><button  ng-click="Save()" type="button" class="btn btn-success">Save</button>
+                        </small></h1>
+                    </div>
+                </div>
 
-                <h2>Shortcut key</h2>
-                <input  ng-model="options.shortcutKey" type="text" placeholder="shortcut key" />
-                <br>
-                <h2>Expanders</h2>
-                <p ng-repeat="shortcut in options.shortcuts">
-                    Expand <input ng-model="shortcut.key" type="text" placeholder="your key" /> to
-                    <input  ng-model="shortcut.value" type="text" placeholder="your full value">
-                    <a href="#" ng-click="Delete($index)">Delete</a>
-                </p>
+                <div class="row">
+                    <div class="col-md-12">
+                        <p ng-show="message" class="label label-success">{{ message }}</p>
 
-                <div id="status"></div>
-                <button  ng-click="AddShortcut()">Add Shortcut</button>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2>Shortcut key</h2>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <input  ng-model="options.shortcutKey" type="text" placeholder="shortcut key" />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2>Expanders</h2>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table  table-condensed">
+                            <tr ng-repeat="shortcut in options.shortcuts">
+                                <td>Expand</td>
+                                <td><input ng-model="shortcut.key" type="text" placeholder="your key" /></td>
+                                <td>to</td>
+                                <td><input  ng-model="shortcut.value" type="text" placeholder="your full value"></td>
+                                <td> <a href="#" ng-click="Delete($index)"><span class="glyphicon glyphicon-remove"></span> Delete</a></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <button  ng-click="AddShortcut()" type="button" class="btn btn-primary">Add Shortcut</button>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2>Advanced Options</h2>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>Special Selectors</h4>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table  table-condensed">
+                            <tr ng-repeat="selector in options.cssSelectors track by $index">
+                                <td><input ng-model="selector.value" type="text" placeholder="example: .textbox" /></td>
+                                <td>  <a href="#" ng-click="DeleteSelector($index)"><span class="glyphicon glyphicon-remove"></span> Delete</a></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <button  ng-click="AddSelector()" type="button" class="btn btn-primary">Add Shortcut</button>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>Other Options</h4>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <input type="checkbox" ng-model="options.includeIFrames"> Include Iframes
+                    </div>
+                </div>
+
+                <div class="row footer">
+                    <div class="col-md-12">
+                        <a href="mailto:jsturtevant@gmail.com" target="_top">Send Feedback</a>
+                    </div>
+                </div>
 
 
-                <h2>Advanced Options</h2>
-                <label>Special Selectors</label>
-                <p ng-repeat="selector in options.cssSelectors track by $index">
-                     <input ng-model="selector.value" type="text" placeholder="example: .textbox" />
-                     <a href="#" ng-click="DeleteSelector($index)">Delete</a>
-                </p>
-                <button  ng-click="AddSelector()">Add Shortcut</button>
-
-                <input type="checkbox" ng-model="options.includeIFrames"> Include Iframes
-                <a href="mailto:jsturtevant@gmail.com" target="_top">Send Feedback</a>
             </div>
         </div>
     </body>

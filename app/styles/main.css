@@ -3,3 +3,11 @@
 html {
     /* Defaults css for cssmin process */
 }
+
+.row{
+    padding-left: 15px;
+}
+
+.footer{
+    margin-top: 15px;
+}

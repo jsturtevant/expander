@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "dependencies": {
     "mousetrap": "~1.4.6",
-    "angular": "~1.2.10"
+    "angular": "~1.2.10",
+    "bootstrap": "~3.1.1"
   },
   "homepage": "https://github.com/jsturtevant/expander",
   "authors": [
