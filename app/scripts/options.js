@@ -28,21 +28,21 @@ optionsApp.factory('OptionsData', function() {
 
 optionsApp.directive("showhide", function() {
     return function(scope, element, attrs) {
+        var bodyelement =angular.element(document.getElementById(attrs.showhide));
         element.bind("mouseover", function() {
             element.css("cursor", "pointer");
-            element.css('color', "blue");
+            element.css('color', attrs.togglecolor);
         })
 
         element.bind("mouseleave", function() {
-            if (!element.hasClass('elementshown')){
+            if (bodyelement.hasClass('hidden')){
                 element.css('color', "");
             }
         });
 
         element.bind("click", function() {
-         var bodyelement = document.getElementById(attrs.showhide);
             angular.element(bodyelement).toggleClass('hidden');
-            element.toggleClass('elementshown');
+            element.css('color', attrs.togglecolor);
         });
     };
 });
