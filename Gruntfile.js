@@ -235,6 +235,8 @@ module.exports = function (grunt) {
                     dest: '<%= yeoman.dist %>',
                     src: [
                         'bower_components/angular/angular.js',
+                        'bower_components/bootstrap/dist/css/bootstrap.min.css',
+                        'bower_components/bootstrap/dist/fonts/*',
                         'scripts/options.js'
                     ]
                 }]
