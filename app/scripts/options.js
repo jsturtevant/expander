@@ -1,5 +1,5 @@
 /**
- * Created by jsturtevant on 1/18/14.
+ * Created by jsturtevant on 1/18/14
  */
 var DEFAULT_SHORTCUT_KEY = 'ctrl+shift+k';
 var LOCAL_STORAGE_KEY = 'optionsStore'
@@ -26,11 +26,32 @@ optionsApp.factory('OptionsData', function() {
     }
 });
 
+optionsApp.directive("showhide", function() {
+    return function(scope, element, attrs) {
+        element.bind("mouseover", function() {
+            element.css("cursor", "pointer");
+            element.css('color', "blue");
+        })
+
+        element.bind("mouseleave", function() {
+            if (!element.hasClass('elementshown')){
+                element.css('color', "");
+            }
+        });
+
+        element.bind("click", function() {
+         var bodyelement = document.getElementById(attrs.showhide);
+            angular.element(bodyelement).toggleClass('hidden');
+            element.toggleClass('elementshown');
+        });
+    };
+});
+
 function OptionsCtrl($scope, OptionsData, $timeout){
     $scope.options = OptionsData;
 
     $scope.AddShortcut = function(){
-      $scope.options.shortcuts.push({key: "", value:""})
+        $scope.options.shortcuts.push({key: "", value:""})
     };
 
     $scope.AddSelector = function(){
