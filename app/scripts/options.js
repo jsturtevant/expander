@@ -55,6 +55,10 @@ function OptionsCtrl($scope, OptionsData, $timeout){
     };
 
     $scope.AddSelector = function(){
+        if (!$scope.options.cssSelectors){
+            $scope.options.cssSelectors = defaultOptions.cssSelectors;
+        }
+
         $scope.options.cssSelectors.push({value: ""})
     };
 
